@@ -33,7 +33,7 @@ class Environment:
         if self.video:
             create_video()
         
-        with open('logs.csv', 'w', newline='') as file:
+        with open('analisis.csv', 'w', newline='') as file:
             writer = csv.writer(file)
             writer.writerow(self.all_best)
             writer.writerow(self.all_averages)

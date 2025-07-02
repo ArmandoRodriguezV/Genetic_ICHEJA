@@ -3,7 +3,7 @@ import csv
 
 # Leer el CSV
 datos = []
-with open('logs.csv', 'r') as file:
+with open('analisis.csv', 'r') as file:
     reader = csv.reader(file)
     for fila in reader:
         datos.append([float(x) for x in fila])
