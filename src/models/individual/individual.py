@@ -8,6 +8,9 @@ class Individual:
         self.habs_aprob = []
         self.habilidades_no_aprobadas()
         
+        
+        self.metric_1 = len(self.habs_no_aprob) / len(self.habs_aprob + self.habs_no_aprob)
+        
     def habilidades_no_aprobadas(self):        
         for x in self.gens:
             for y in reactivos[x]:
