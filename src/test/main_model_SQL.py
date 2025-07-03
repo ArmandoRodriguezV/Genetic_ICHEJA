@@ -20,6 +20,17 @@ reactivos = {
     "R8": ["H1", "H5", "H6"],
     "R9": ["H5", "H6"]
 }
+reactivos_realizados = {
+    "R1": 2,
+    "R2": 3,
+    "R3": 0,
+    "R4": 0,
+    "R5": 0,
+    "R6": 0,
+    "R7": 0,
+    "R8": 0,
+    "R9": 1
+}
 
 todos_los_reactivos = {}
 habilidades = list(hab.keys())
