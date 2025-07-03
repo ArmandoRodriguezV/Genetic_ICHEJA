@@ -15,17 +15,14 @@ class Individual:
         self.habs_no_aprob_por_r = []
         self.metrica_1 = round(len(self.habs_no_aprob) / len(self.habs_aprob + self.habs_no_aprob), 2)
         self.metrica_2 = sum([ reactivos_realizados[n] for n in self.gens])
-        self.metrica_3 = sum(
-            1 for r in self.gens
-            if all(hab[h] >= 0.7 for h in reactivos[r])
-        )
-
+        self.metrica_3 = len(self.habs_aprob)
+        
         habilidades_totales = set()
         for r in self.gens:
             habilidades_totales.update(reactivos[r])
         self.metrica_4 = len(habilidades_totales)
 
-        self.fitness = self.metrica_1 + self.metrica_2 + self.metrica_3 + self.metrica_4
+        self.fitness = ((1 + self.metrica_1) * (1 + self.metrica_4)) / ((1 + self.metrica_2 ) * (1 + self.metrica_3))
         
         self.data = {
             "HNA": len(self.habs_no_aprob),
