@@ -13,7 +13,7 @@ class Individual:
         self.habilidades_no_aprobadas()
         
         self.habs_no_aprob_por_r = []
-        self.metrica_1 = round(len(self.habs_no_aprob) / len(self.habs_aprob + self.habs_no_aprob), 2)
+        self.metrica_1 = len(self.habs_no_aprob) / len(self.habs_aprob + self.habs_no_aprob)
         self.metrica_2 = sum([ reactivos_realizados[n] for n in self.gens])
         self.metrica_3 = len(self.habs_aprob)
         
@@ -53,6 +53,6 @@ class Individual:
     
     def __str__(self):
         if self.show_table:
-            return f"{mostrar_tabla_de(self.gens)}\nFitness: {self.fitness}"
+            return f"{mostrar_tabla_de(self.gens)}\nFitness: {self.fitness}\n"
         else:
-            return f"Fitness: {self.fitness}"
+            return f"Fitness: {self.fitness}\n"

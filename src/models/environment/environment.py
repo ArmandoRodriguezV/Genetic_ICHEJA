@@ -26,10 +26,9 @@ class Envioronment:
             self.poblacion.append(h1)
             self.poblacion.append(h2)
         
-    
-    def print_pob(self):
+    def print_pob(self, show_table: bool):
         for i in self.poblacion:
-            i.show_table = True
+            i.show_table = show_table
             print(i)
 
 
