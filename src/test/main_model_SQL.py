@@ -21,6 +21,12 @@ reactivos = {
     "R9": ["H5", "H6"]
 }
 
+todos_los_reactivos = {}
+habilidades = list(hab.keys())
+
+for r, hs in reactivos.items():
+    todos_los_reactivos[r] = [1 if h in hs else 0 for h in habilidades]
+
 def mostrar_tabla_de(lista_reactivos):
     habilidades_unicas = list(hab.keys())
 
@@ -36,3 +42,12 @@ def mostrar_tabla_de(lista_reactivos):
 
     headers = ["G"] + habilidades_unicas
     return tabulate(tabla, headers=headers, tablefmt="grid", floatfmt=".2f")
+
+def mostrar_tabla_completa():
+    habilidades_unicas = list(hab.keys())
+    tabla = []
+    for reactivo, hs in reactivos.items():
+        fila = [1 if h in hs else 0 for h in habilidades_unicas]
+        tabla.append([reactivo] + fila)
+    headers = ["Reactivo"] + habilidades_unicas
+    print(tabulate(tabla, headers=headers, tablefmt="grid"))

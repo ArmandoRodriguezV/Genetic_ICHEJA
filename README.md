@@ -1,2 +1,2 @@
-Instalar:
+# Instalar:
 pip install tabulate
