@@ -4,13 +4,16 @@ from ...test.main_model_SQL import hab, reactivos, mostrar_tabla_de
 class Individual:
     def __init__(self, gens: List[str]):
         self.gens = gens
+        self.show_table = False
+        self.update_individual()
+    
+    def update_individual(self):
         self.habs_no_aprob = []
         self.habs_aprob = []
         self.habilidades_no_aprobadas()
         
         self.habs_no_aprob_por_r = []
-        
-        self.fitness = round(len(self.habs_no_aprob) / len(self.habs_aprob + self.habs_no_aprob), 2)
+        self.metrica_1 = round(len(self.habs_no_aprob) / len(self.habs_aprob + self.habs_no_aprob), 2)
         
         self.data = {
             "HNA": len(self.habs_no_aprob),
@@ -34,4 +37,7 @@ class Individual:
         return reactivos
     
     def __str__(self):
-        return mostrar_tabla_de(self.gens)
+        if self.show_table:
+            return f"{self.mostrar_tabla()}\nFitness: {self.fitness}"
+        else:
+            return f"Fitness: {self.fitness}"

@@ -12,4 +12,9 @@ poblacion = [
 
 environment = Envioronment(poblacion)
 
-mostrar_tabla_completa()
+h1, h2 = environment.cross(padre=poblacion[0], madre=poblacion[1])
+
+print(h1)
+print(h2)
+
+# mostrar_tabla_completa()
