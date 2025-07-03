@@ -1,9 +1,17 @@
+from random import sample
 from src.models.individual.individual import Individual
 from src.models.environment.environment import Envioronment
 from src.test.main_model_SQL import mostrar_tabla_completa, reactivos
 
-i1 = Individual(["R2", "R9", "R5"])
+poblacion = []
 
-print(i1.data)
+claves_reactivos = list(reactivos.keys())
 
-mostrar_tabla_completa()
+for _ in range(20):
+    seleccionados = sample(claves_reactivos, 10)
+    individuo = Individual(seleccionados)
+    poblacion.append(individuo)
+
+# Mostrar los genes de cada individuo
+for i, ind in enumerate(poblacion):
+    print(f"Individuo {i+1}: {ind.gens}")
