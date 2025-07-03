@@ -1,11 +1,15 @@
 from src.models.individual.individual import Individual
+from src.models.environment.environment import Envioronment
 from src.test.main_model_SQL import mostrar_tabla_completa
 
-i = Individual(['R1', 'R2', 'R9'])
+poblacion = [
+    Individual(['R1', 'R2', 'R9']),
+    Individual(['R2', 'R3', 'R4']),
+    Individual(['R2', 'R4', 'R5']),
+    Individual(['R1', 'R2', 'R4']),
+    Individual(['R1', 'R5', 'R9'])
+]
 
-print(i.habs_no_aprob)
-print(i.habs_aprob)
-print(i.data)
-print(i)
+environment = Envioronment(poblacion)
 
-# mostrar_tabla_completa()
+mostrar_tabla_completa()
