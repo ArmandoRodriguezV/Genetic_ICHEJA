@@ -1,0 +1,2 @@
+Instalar:
+pip install tabulate
