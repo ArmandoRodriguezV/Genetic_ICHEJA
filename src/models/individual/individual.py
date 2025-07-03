@@ -53,6 +53,6 @@ class Individual:
     
     def __str__(self):
         if self.show_table:
-            return f"{self.mostrar_tabla_de(self.gens)}\nFitness: {self.fitness}"
+            return f"{mostrar_tabla_de(self.gens)}\nFitness: {self.fitness}"
         else:
             return f"Fitness: {self.fitness}"

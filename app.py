@@ -10,5 +10,10 @@ for _ in range(20):
     seleccionados = sample(claves_reactivos, 10)
     individuo = Individual(seleccionados)
     poblacion.append(individuo)
-    
+
+print(len(poblacion))
 entorno = Envioronment(poblacion=poblacion)
+
+entorno.start()
+
+print(len(entorno.poblacion))
