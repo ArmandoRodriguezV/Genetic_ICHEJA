@@ -14,11 +14,31 @@ poblacion = [
     Individual(sample([f"R{i}" for i in range(1, 21)], 10)),
     Individual(sample([f"R{i}" for i in range(1, 21)], 10)),
     Individual(sample([f"R{i}" for i in range(1, 21)], 10)),
+    Individual(sample([f"R{i}" for i in range(1, 21)], 10)),
+    Individual(sample([f"R{i}" for i in range(1, 21)], 10)),
+    Individual(sample([f"R{i}" for i in range(1, 21)], 10)),
+    Individual(sample([f"R{i}" for i in range(1, 21)], 10)),
+    Individual(sample([f"R{i}" for i in range(1, 21)], 10)),
+    Individual(sample([f"R{i}" for i in range(1, 21)], 10)),
+    Individual(sample([f"R{i}" for i in range(1, 21)], 10)),
+    Individual(sample([f"R{i}" for i in range(1, 21)], 10)),
+    Individual(sample([f"R{i}" for i in range(1, 21)], 10)),
+    Individual(sample([f"R{i}" for i in range(1, 21)], 10)),
+    Individual(sample([f"R{i}" for i in range(1, 21)], 10)),
+    Individual(sample([f"R{i}" for i in range(1, 21)], 10)),
+    Individual(sample([f"R{i}" for i in range(1, 21)], 10)),
+    Individual(sample([f"R{i}" for i in range(1, 21)], 10)),
+    Individual(sample([f"R{i}" for i in range(1, 21)], 10)),
+    Individual(sample([f"R{i}" for i in range(1, 21)], 10)),
+    Individual(sample([f"R{i}" for i in range(1, 21)], 10)),
+    Individual(sample([f"R{i}" for i in range(1, 21)], 10)),
+    Individual(sample([f"R{i}" for i in range(1, 21)], 10)),
+    Individual(sample([f"R{i}" for i in range(1, 21)], 10))
 ]
 
-print(f"población inicial {len(poblacion)}")
-entorno = Envioronment(poblacion=poblacion, generations=5)
+# print(f"población inicial {len(poblacion)}")
+entorno = Envioronment(poblacion=poblacion, generations=10)
 entorno.start()
 
-entorno.print_pob(True)
-print(f"población final {len(entorno.poblacion)}")
+entorno.print_pob(False)
+# print(f"población final {len(entorno.poblacion)}")

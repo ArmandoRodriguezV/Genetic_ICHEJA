@@ -19,18 +19,28 @@ class Envioronment:
         return self.poblacion[p1], self.poblacion[p2]
 
     def crosses(self):
+        new_children = []
         for _ in range(len(self.poblacion)):
             padre, madre = self.select_pair()
-            point = 5
-            
-            h1 = Individual(padre.gens[:point] + madre.gens[point:])
-            h2 = Individual(madre.gens[:point] + padre.gens[point:])
-            
-            self.poblacion.append(h1)
-            self.poblacion.append(h2)
+            point = randint(1, len(padre.gens) - 2)
+
+            def cruzar(p1, p2):
+                n = len(p1.gens)
+                mitad = p1.gens[:point]
+                resto = [g for g in p2.gens if g not in mitad]
+                gens_hijo = (mitad + resto)[:n]
+                return Individual(gens_hijo)
+
+            h1 = cruzar(padre, madre)
+            h2 = cruzar(madre, padre)
+
+            new_children.append(h1)
+            new_children.append(h2)
+
+        self.poblacion.extend(new_children)
         
     def poda(self):
-        self.poblacion = sorted(self.poblacion, key=lambda i: i .fitness)
+        self.poblacion = sorted(self.poblacion, key=lambda i: i.fitness, reverse=True)
         mejor_padre = self.poblacion[0]
         mejor_madre = self.poblacion[1]
         
@@ -48,6 +58,7 @@ class Envioronment:
         self.poblacion.append(mejor_madre)
         self.poblacion += primera_mitad
         self.poblacion += segunda_mitad
+        self.poblacion = sorted(self.poblacion, key=lambda i: i.fitness, reverse=True)
 
     def print_pob(self, show_table: bool = False):
         for i in self.poblacion:
