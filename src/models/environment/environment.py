@@ -1,13 +1,15 @@
-from random import sample, randint
+from random import sample, randint, random, choice
 from math import ceil
 from typing import List
 from ..individual.individual import Individual
+from ...test.main_model_SQL import reactivos
 
 class Envioronment:
-    def __init__(self, poblacion: List[Individual], generations: int = 1):
+    def __init__(self, poblacion: List[Individual], generations: int = 1, pm: float = 0.6):
         self.poblacion = poblacion
         self.generations = generations
         self.size = len(self.poblacion)
+        self.pm = pm
         
     def start(self):
         for _ in range(self.generations):
@@ -17,6 +19,16 @@ class Envioronment:
     def select_pair(self):
         p1, p2 = sample(range(len(self.poblacion)), 2)
         return self.poblacion[p1], self.poblacion[p2]
+    
+    def mutation(self, ind: Individual):
+        if random() < self.pm:
+            position = randint(1, len(ind.gens)) - 1
+            genes_no_usados = list(set(reactivos).difference(ind.gens))
+            remplazo = choice(genes_no_usados)
+            
+            ind.gens[position] = remplazo
+
+        return ind
 
     def crosses(self):
         new_children = []
@@ -31,8 +43,8 @@ class Envioronment:
                 gens_hijo = (mitad + resto)[:n]
                 return Individual(gens_hijo)
 
-            h1 = cruzar(padre, madre)
-            h2 = cruzar(madre, padre)
+            h1 = self.mutation(cruzar(padre, madre))
+            h2 = self.mutation(cruzar(madre, padre))
 
             new_children.append(h1)
             new_children.append(h2)
