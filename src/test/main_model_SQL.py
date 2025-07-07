@@ -1,3 +1,4 @@
+# src/test/main_model_SQL.py
 from tabulate import tabulate
 
 hab = {
@@ -79,7 +80,7 @@ def mostrar_tabla_de(lista_reactivos):
             tabla.append([reactivo_key] + fila)
 
     headers = ["G"] + habilidades_unicas
-    return tabulate(tabla, headers=headers, tablefmt="pipe", floatfmt=".2f")
+    return tabulate(tabla, headers=headers, tablefmt="fancy_grid", floatfmt=".2f")
 
 def mostrar_tabla_MRH():
     habilidades_unicas = list(hab.keys())
@@ -88,4 +89,4 @@ def mostrar_tabla_MRH():
         fila = [1 if h in hs else 0 for h in habilidades_unicas]
         tabla.append([reactivo] + fila)
     headers = ["Reactivo"] + habilidades_unicas
-    print(tabulate(tabla, headers=headers, tablefmt="pipe"))
+    print(tabulate(tabla, headers=headers, tablefmt="fancy_grid"))

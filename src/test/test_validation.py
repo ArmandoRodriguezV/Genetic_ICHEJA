@@ -1,3 +1,4 @@
+# src/test/test_validation.py
 from src.models.individual.individual import Individual
 from src.models.environment.environment import Envioronment
 from validation import validar_estrategia, validar_poblacion, crear_mrh_temp
@@ -53,7 +54,7 @@ def test_validacion_poblacion():
 def test_crear_mrh_temp():
     print("\n=== PRUEBA DE CREACIÓN DE MRH_TEMP ===")
     
-    genes_test = ["R1", "R9", "R15"]  # Reactivos con habilidades no aprobadas
+    genes_test = ["R1", "R9", "R15"]
     individuo_test = Individual(genes_test)
     
     print(f"Individuo de prueba: {genes_test}")
