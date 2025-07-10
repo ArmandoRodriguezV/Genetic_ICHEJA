@@ -3,6 +3,8 @@ from math import ceil
 from typing import List
 from ..individual.individual import Individual
 from ...test.main_model_SQL import reactivos
+from ...test.frame_generator import generate_frames
+from ...test.video import create_video
 
 class Envioronment:
     def __init__(self, poblacion: List[Individual], generations: int = 1, pm: float = 0.6):
@@ -11,10 +13,26 @@ class Envioronment:
         self.size = len(self.poblacion)
         self.pm = pm
         
+        self.gen = False
+        
+        self.mejor = []
+        self.peor = []
+        self.promedio = []
+        
     def start(self):
         for _ in range(self.generations):
             self.crosses()
             self.poda()
+            self.mejor.append(self.poblacion[self.size - 1].fitness)
+            self.peor.append(self.poblacion[0].fitness)
+            
+            promedio_gen = sum(i.fitness for i in self.poblacion) / self.size
+            self.promedio.append(promedio_gen)
+            if self.gen:
+                generate_frames(self.mejor, self.peor, self.promedio)
+        
+        if self.gen:
+            create_video()
     
     def select_pair(self):
         p1, p2 = sample(range(len(self.poblacion)), 2)
@@ -25,9 +43,7 @@ class Envioronment:
             position = randint(1, len(ind.gens)) - 1
             genes_no_usados = list(set(reactivos).difference(ind.gens))
             remplazo = choice(genes_no_usados)
-            
             ind.gens[position] = remplazo
-
         return ind
 
     def crosses(self):
@@ -52,7 +68,7 @@ class Envioronment:
         self.poblacion.extend(new_children)
         
     def poda(self):
-        self.poblacion = sorted(self.poblacion, key=lambda i: i.fitness, reverse=True)
+        self.poblacion = sorted(self.poblacion, key=lambda i: i.fitness)
         mejor_padre = self.poblacion[0]
         mejor_madre = self.poblacion[1]
         
@@ -70,9 +86,12 @@ class Envioronment:
         self.poblacion.append(mejor_madre)
         self.poblacion += primera_mitad
         self.poblacion += segunda_mitad
-        self.poblacion = sorted(self.poblacion, key=lambda i: i.fitness, reverse=True)
+        self.poblacion = sorted(self.poblacion, key=lambda i: i.fitness)
 
-    def print_pob(self, show_table: bool = False):
+    def show_poblation(self, show_table: bool = False):
         for i in self.poblacion:
             i.show_table = show_table
             print(i)
+        
+    def generate_video(self):
+        self.gen = True
