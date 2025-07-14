@@ -1,10 +1,9 @@
-# src/main_algorithm.py
 from random import sample, seed
 from typing import List
-from models.individual.individual import Individual
-from models.environment.environment import Environment
-from test.main_model_SQL import mostrar_tabla_MRH, MRH, reactivos, hab
-from test.validation import validar_estrategia, validar_poblacion, mostrar_reporte_validacion
+from src.models.individual.individual import Individual
+from src.models.environment.environment import Environment
+from src.test.main_model_SQL import mostrar_tabla_MRH, MRH, reactivos, hab
+from src.test.validation import validar_estrategia, validar_poblacion, mostrar_reporte_validacion
 
 def crear_poblacion_inicial(tamaño_poblacion: int = 10, K: int = 3) -> List[Individual]:
     """

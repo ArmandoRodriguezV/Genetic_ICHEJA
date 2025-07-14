@@ -1,7 +1,6 @@
-# src/test/validation.py
 from typing import List, Dict, Any
 from src.models.individual.individual import Individual
-from src.models.environment.environment import Envioronment
+from src.models.environment.environment import Environment
 from src.test.main_model_SQL import hab, reactivos, mostrar_tabla_de, MRH
 
 def validar_estrategia(individual: Individual, mostrar_detalle: bool = True) -> Dict[str, Any]:
@@ -59,7 +58,7 @@ def validar_estrategia(individual: Individual, mostrar_detalle: bool = True) -> 
     }
 
 
-def validar_poblacion(environment: Envioronment, mostrar_mejores: int = 3) -> List[Dict[str, Any]]:
+def validar_poblacion(environment: Environment, mostrar_mejores: int = 3) -> List[Dict[str, Any]]:
     resultados = []
     
     print("=== VALIDACIÓN DE POBLACIÓN ===")

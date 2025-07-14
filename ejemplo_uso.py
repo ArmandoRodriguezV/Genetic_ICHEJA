@@ -1,4 +1,3 @@
-# ejemplo_uso.py
 from app import ejecutar_algoritmo_completo, comparar_estrategias
 from src.models.individual.individual import Individual
 from src.models.environment.environment import Environment
@@ -91,7 +90,7 @@ def experimento_parametros():
         print(f"\n--- {config['desc']} ---")
         
         # Crear población base (misma para todas las pruebas)
-        from src.main_algorithm import crear_poblacion_inicial
+        from app import crear_poblacion_inicial
         poblacion = crear_poblacion_inicial(8, 3)
         
         ambiente = Environment(
@@ -112,7 +111,3 @@ if __name__ == "__main__":
     ejemplo_basico()
     ejemplo_personalizado()
     ejemplo_completo_con_analisis()
-    
-    # Experimentos adicionales (comentar si no se necesitan)
-    # experimento_parametros()
-    # comparar_estrategias()

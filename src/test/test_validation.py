@@ -1,6 +1,5 @@
-# src/test/test_validation.py
 from src.models.individual.individual import Individual
-from src.models.environment.environment import Envioronment
+from src.models.environment.environment import Environment
 from validation import validar_estrategia, validar_poblacion, crear_mrh_temp
 from src.test.main_model_SQL import hab, reactivos, mostrar_tabla_MRH
 
@@ -37,7 +36,7 @@ def test_validacion_poblacion():
         Individual(["R13", "R14", "R18"])
     ]
     
-    ambiente_test = Envioronment(poblacion_test, generations=1)
+    ambiente_test = Environment(poblacion_test, generations=1)
     
     print(f"Población de prueba creada con {len(poblacion_test)} individuos")
     for i, individuo in enumerate(poblacion_test):
