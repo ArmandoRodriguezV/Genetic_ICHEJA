@@ -1,6 +1,7 @@
 # src/test/main_model_SQL.py
 from tabulate import tabulate
-
+#implementar que Al sumar las habilidades de los reactivos deben de dar 1
+# templates, account, grade
 hab = {
     "H1": 0.9,
     "H2": 1.0,

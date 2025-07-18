@@ -4,7 +4,6 @@ from src.models.environment.environment import Environment
 from src.test.validation import validar_estrategia
 
 def ejemplo_basico():
-    """Ejemplo básico de uso del algoritmo genético"""
     print("=== EJEMPLO BÁSICO ===")
     
     # Crear un individuo manualmente
